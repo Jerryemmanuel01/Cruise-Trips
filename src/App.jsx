@@ -7,8 +7,8 @@ import { getPlace } from "./apis/Api";
 function App() {
   const [type, setType] = useState("restaurants");
   const [city, setCity] = useState("lagos");
+  const [coordinates, setCoordinates]= useState({});
 
-  console.log(city);
 
   useEffect(() => {
     getPlace(city).then((data)=>{

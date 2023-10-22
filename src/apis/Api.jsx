@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getPlace = async (city) => {
   try {
-    const data = await axios.get(
+    const {data : data} = await axios.get(
       "https://opentripmap-places-v1.p.rapidapi.com/en/places/geoname",
       {
         params: { name: city },
@@ -13,7 +13,7 @@ export const getPlace = async (city) => {
         },
       }
     );
-    console.log(data.data);
+    return data
   } catch (error) {
     console.error(error);
   }
