@@ -3,7 +3,12 @@ import "./body.scss"
 
 const Body = () => {
   return (
-    <div>Body</div>
+    <div className='body'>
+      <div className="intro">
+        <h2>Welcome to Cruise Trips</h2>
+        <p>...your favourite travel advisor app</p>
+      </div>
+    </div>
   )
 }
 
