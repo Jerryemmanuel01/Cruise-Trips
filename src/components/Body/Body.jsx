@@ -2,15 +2,14 @@ import React from "react";
 import "./body.scss";
 import {
   CircularProgress,
-  Grid,
-  Typography,
   InputLabel,
   MenuItem,
   FormControl,
   Select,
 } from "@material-ui/core";
 
-const Body = ({ type, setType }) => {
+const Body = ({ type, setType, places }) => {
+  console.log(places);
   return (
     <div className="body">
       <div className="intro">
@@ -19,8 +18,7 @@ const Body = ({ type, setType }) => {
       </div>
       <div className="main">
         <p>
-          Discover and Explore Amazing Restuarants, Hotel 
-          and ttractive resorts
+          Discover and Explore Amazing Restuarants, Hotel and ttractive resorts
         </p>
       </div>
 

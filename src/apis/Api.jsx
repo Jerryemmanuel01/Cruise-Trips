@@ -2,13 +2,12 @@ import axios from "axios";
 
 export const getPlace = async (city) => {
   try {
-    const {data : data} = await axios.get(
+    const { data: data } = await axios.get(
       "https://opentripmap-places-v1.p.rapidapi.com/en/places/geoname",
       {
         params: { name: city },
         headers: {
-          "X-RapidAPI-Key":
-            "5f954b434cmshefcc720d7b2460ep1b33b5jsn2cffe2f31170",
+          "X-RapidAPI-Key": import.meta.env.VITE_CRUISETRIPS_KEY,
           "X-RapidAPI-Host": "opentripmap-places-v1.p.rapidapi.com",
         },
       }
@@ -18,3 +17,27 @@ export const getPlace = async (city) => {
     console.error(error);
   }
 };
+
+
+export const getAdvisor = async (lng, lat, type) => {
+
+    try {
+      const { data } = await axios.get(
+        `https://travel-advisor.p.rapidapi.com/${type}/list-by-latlng`,
+        {
+          params: {
+            latitude: lat,
+            longitude: lng,
+          },
+          headers: {
+            "X-RapidAPI-Key": import.meta.env.VITE_CRUISETRIPS_KEY,
+            "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com",
+          },
+        }
+      );
+      return data
+    } catch (error) {
+      console.error(error);
+    }
+
+}
