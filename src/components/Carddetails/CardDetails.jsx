@@ -77,7 +77,7 @@ const CardDetails = ({ places, loading, cityInfo }) => {
                     <div>
                       <MdLocationPin className="cardIcons locationIcon" />
                     </div>
-                    <div className="addressDetails">{place.address}</div>
+                    <div className="addressDetail">{place.address}</div>
                   </div>
                 )}
                 {place?.phone && (
