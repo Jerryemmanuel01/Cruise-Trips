@@ -66,8 +66,9 @@
         font-size: 24px;
         font-weight: 600;
       }
+      
       .rankingDetails{
-        
+           height: auto;
            width: 80%;
            text-align: right;  
       }
@@ -84,7 +85,7 @@
       .cardEle {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        // align-items: center;
         font-weight: 500;
         margin-top: 10px;
         @media screen and (max-width: 480px) {
