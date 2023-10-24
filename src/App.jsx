@@ -3,32 +3,39 @@ import Body from "./components/Body/Body"
 import Header from "./components/Header/Header"
 import { CssBaseline } from "@material-ui/core";
 import { getAdvisor, getPlace } from "./apis/Api";
+import CardDetails from "./components/Carddetails/CardDetails";
 
 function App() {
   const [type, setType] = useState("restaurants");
   const [city, setCity] = useState("lagos");
-  // const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const [coordinates, setCoordinates]= useState({});
+  const [coordinates, setCoordinates] = useState({
+    // lng: 3.34205,
+    // lat: 6.59651,
+  });
   const [places, setplaces]= useState([]);
 
   
   useEffect(() => {
-    // setLoading(true)
     getPlace(city).then((data)=>{
       const longitude = data.lon;
       const latitude = data.lat
       
       setCoordinates({lng:longitude, lat:latitude})
+      
     })
   }, [city])
   
  useEffect(() => {
+    setLoading(true)
     getAdvisor(coordinates.lng, coordinates.lat, type).then((data) =>{
       setplaces(data);
+      setLoading(false)
     })
   },[coordinates, type]) 
 
+  console.log(places);
 
   return (
     <>
@@ -41,6 +48,7 @@ function App() {
         type={type}
         setType={setType}
         places={places}
+        loading={loading}
       />
     </>
   )
