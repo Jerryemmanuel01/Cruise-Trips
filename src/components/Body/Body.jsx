@@ -1,11 +1,6 @@
 import React from "react";
 import "./body.scss";
-import {
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-} from "@material-ui/core";
+import { InputLabel, MenuItem, FormControl, Select } from "@mui/material";
 import CardDetails from "../Carddetails/CardDetails";
 
 const Body = ({ type, setType, places, loading, cityInfo }) => {
@@ -25,7 +20,13 @@ const Body = ({ type, setType, places, loading, cityInfo }) => {
 
         <FormControl className="formControl" fullWidth>
           <InputLabel>Type</InputLabel>
-          <Select value={type} onChange={(e) => setType(e.target.value)}>
+          <Select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            label="Type"
+          >
             <MenuItem value="restaurants">Restaurants</MenuItem>
             <MenuItem value="hotels">Hotels</MenuItem>
             <MenuItem value="attractions">Attractions</MenuItem>

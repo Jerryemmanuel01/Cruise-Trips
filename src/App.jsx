@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Body from "./components/Body/Body";
 import Header from "./components/Header/Header";
-import { CssBaseline } from "@material-ui/core";
+import { CssBaseline } from "@mui/material";
 import { getAdvisor, getPlace } from "./apis/Api";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
     getPlace(city).then((data) => {
       const longitude = data.lon;
       const latitude = data.lat;
-      setCityInfo(data)
+      setCityInfo(data);
       setCoordinates({ lng: longitude, lat: latitude });
     });
   }, [city]);
@@ -34,7 +34,13 @@ function App() {
     <>
       <CssBaseline />
       <Header city={city} setCity={setCity} />
-      <Body type={type} setType={setType} places={places} loading={loading} cityInfo={cityInfo}/>
+      <Body
+        type={type}
+        setType={setType}
+        places={places}
+        loading={loading}
+        cityInfo={cityInfo}
+      />
     </>
   );
 }

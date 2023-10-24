@@ -3,8 +3,7 @@ import "./cardDetails.scss";
 import { MdLocationPin } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
-import { CircularProgress } from "@material-ui/core";
-import Rating from "@material-ui/lab/Rating";
+import { CircularProgress, Rating } from "@mui/material";
 
 const CardDetails = ({ places, loading, cityInfo }) => {
   return (
