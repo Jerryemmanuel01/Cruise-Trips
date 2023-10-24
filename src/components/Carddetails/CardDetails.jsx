@@ -7,7 +7,6 @@ import { CircularProgress } from "@material-ui/core";
 import Rating from "@material-ui/lab/Rating";
 
 const CardDetails = ({ places, loading, cityInfo }) => {
-  console.log(places);
   return (
     <div className="cardDetails">
       <div className="detailsHead">
@@ -21,9 +20,9 @@ const CardDetails = ({ places, loading, cityInfo }) => {
         </div>
       ) : (
         <div className="detailsSec">
-          {places?.map((place) => {
+          {places?.map((place, index) => {
             return (
-              <div className="detailsCard">
+              <div className="detailsCard" key={index}>
                 <div className="cardimg">
                   <img
                     src={

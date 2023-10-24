@@ -3,7 +3,6 @@ import Body from "./components/Body/Body";
 import Header from "./components/Header/Header";
 import { CssBaseline } from "@material-ui/core";
 import { getAdvisor, getPlace } from "./apis/Api";
-import CardDetails from "./components/Carddetails/CardDetails";
 
 function App() {
   const [type, setType] = useState("restaurants");

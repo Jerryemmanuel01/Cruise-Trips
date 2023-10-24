@@ -1,7 +1,6 @@
 import React from "react";
 import "./body.scss";
 import {
-  CircularProgress,
   InputLabel,
   MenuItem,
   FormControl,
