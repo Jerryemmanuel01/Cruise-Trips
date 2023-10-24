@@ -7,7 +7,7 @@ export const getPlace = async (city) => {
       {
         params: { name: city },
         headers: {
-          "X-RapidAPI-Key": import.meta.env.VITE_CRUISETRIPS_KEY,
+          "X-RapidAPI-Key": import.meta.env.VITE_CRUISETRIPS_KEY_NEW,
           "X-RapidAPI-Host": "opentripmap-places-v1.p.rapidapi.com",
         },
       }
@@ -20,7 +20,9 @@ export const getPlace = async (city) => {
 
 export const getAdvisor = async (lng, lat, type) => {
   try {
-    const { data: {data} } = await axios.get(
+    const {
+      data: { data },
+    } = await axios.get(
       `https://travel-advisor.p.rapidapi.com/${type}/list-by-latlng`,
       {
         params: {
@@ -28,7 +30,7 @@ export const getAdvisor = async (lng, lat, type) => {
           longitude: lng,
         },
         headers: {
-          "X-RapidAPI-Key": import.meta.env.VITE_CRUISETRIPS_KEY,
+          "X-RapidAPI-Key": import.meta.env.VITE_CRUISETRIPS_KEY_NEW,
           "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com",
         },
       }

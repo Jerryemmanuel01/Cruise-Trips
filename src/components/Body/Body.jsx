@@ -10,6 +10,7 @@ import {
 import CardDetails from "../Carddetails/CardDetails";
 
 const Body = ({ type, setType, places, loading }) => {
+  console.log(places);
   return (
     <>
       <div className="body">

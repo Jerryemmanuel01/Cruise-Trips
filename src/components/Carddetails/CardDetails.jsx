@@ -44,19 +44,21 @@ const CardDetails = ({ places, loading }) => {
                   <div className="rankingLabel">Ranking</div>
                   <div className="rankingDetails">{place.ranking}</div>
                 </div>
-
-                <div className="awardSec cardEle">
-                  <div className="awardImg">img</div>
-                  <div className="awardCert">
-                    Certificate of Experience 2021
+                {place?.awards?.map(() => (
+                  <div className="awardSec cardEle">
+                    <div className="awardImg">
+                      <img src={award.images.small} alt={award.display_name} />
+                    </div>
+                    <div className="awardCert">{award.display_name}</div>
                   </div>
-                </div>
+                ))}
 
                 <div className="cuisineSec">
-                  <div className="cuisine">African Dish </div>
-                  <div className="cuisine">Intercontinental </div>
-                  <div className="cuisine">Spanish Dish </div>
-                  <div className="cuisine">china Dish </div>
+                  {place?.cuisine?.map(({ name }) => (
+                    <div className="cuisine" key={name}>
+                      {name}
+                    </div>
+                  ))}
                 </div>
 
                 <div className="address cardEle">
