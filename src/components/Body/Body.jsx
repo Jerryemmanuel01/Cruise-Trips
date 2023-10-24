@@ -9,8 +9,7 @@ import {
 } from "@material-ui/core";
 import CardDetails from "../Carddetails/CardDetails";
 
-const Body = ({ type, setType, places, loading }) => {
-  console.log(places);
+const Body = ({ type, setType, places, loading, cityInfo }) => {
   return (
     <>
       <div className="body">
@@ -34,10 +33,7 @@ const Body = ({ type, setType, places, loading }) => {
           </Select>
         </FormControl>
       </div>
-      <CardDetails
-        places={places}
-        loading={loading}
-      />
+      <CardDetails places={places} loading={loading} cityInfo={cityInfo} />
     </>
   );
 };

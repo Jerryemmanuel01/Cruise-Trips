@@ -1,16 +1,18 @@
 import React from "react";
 import "./cardDetails.scss";
 import { MdLocationPin } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
 import { CircularProgress } from "@material-ui/core";
+import Rating from "@material-ui/lab/Rating";
 
-const CardDetails = ({ places, loading }) => {
+const CardDetails = ({ places, loading, cityInfo }) => {
   console.log(places);
   return (
     <div className="cardDetails">
       <div className="detailsHead">
         <p>
-          LAGOS, <span>NG</span>
+          {cityInfo.name} <span>{cityInfo.country}</span>
         </p>
       </div>
       {loading ? (
@@ -32,13 +34,26 @@ const CardDetails = ({ places, loading }) => {
                     alt=""
                   />
                 </div>
-
                 <div className="cardName">{place.name}</div>
-
-                <div className="PriceSec cardEle">
-                  <div className="priceLabel">Price</div>
-                  <div className="priceAmount">{place.price_level}</div>
+                <div className="cardEle">
+                  <Rating value={Number(place.rating)} readOnly />
+                  <div className="priceAmount">
+                    out of {place.num_reviews} reviews{" "}
+                  </div>
                 </div>
+
+                {place?.price &&
+                  (place.category ? (
+                    <div className="PriceSec cardEle">
+                      <div className="priceLabel">Price</div>
+                      <div className="priceAmount">{place.price_level}</div>
+                    </div>
+                  ) : (
+                    <div className="PriceSec cardEle">
+                      <div className="priceLabel">Price</div>
+                      <div className="priceAmount">{place.price}</div>
+                    </div>
+                  ))}
 
                 <div className="Ranking  cardEle">
                   <div className="rankingLabel">Ranking</div>
@@ -52,7 +67,6 @@ const CardDetails = ({ places, loading }) => {
                     <div className="awardCert">{award.display_name}</div>
                   </div>
                 ))}
-
                 <div className="cuisineSec">
                   {place?.cuisine?.map(({ name }) => (
                     <div className="cuisine" key={name}>
@@ -60,21 +74,38 @@ const CardDetails = ({ places, loading }) => {
                     </div>
                   ))}
                 </div>
+                {place?.address && (
+                  <div className="address cardEle">
+                    <div>
+                      <MdLocationPin className="cardIcons locationIcon" />
+                    </div>
+                    <div className="addressDetails">{place.address}</div>
+                  </div>
+                )}
+                {place?.phone && (
+                  <div className="contact cardEle">
+                    <div>
+                      <BsTelephoneFill className="cardIcons" />
+                    </div>
+                    <div className="addressDetails">{place.phone}</div>
+                  </div>
+                )}
+                {place?.email && (
+                  <div className="contact cardEle">
+                    <div>
+                      <MdEmail className="cardIcons" />
+                    </div>
+                    <div className="addressDetails">{place.email}</div>
+                  </div>
+                )}
 
-                <div className="address cardEle">
-                  <div>
-                    <MdLocationPin className="cardIcons locationIcon" />
-                  </div>
-                  <div className="addressDetails">
-                    No.12, Agu Street, Ikorodu, Lagos
-                  </div>
-                </div>
-
-                <div className="contact cardEle">
-                  <div>
-                    <BsTelephoneFill className="cardIcons" />
-                  </div>
-                  <div className="addressDetails">+2345689798</div>
+                <div className="CTA cardEle">
+                  <button onClick={() => window.open(place.web_url, "_blank")}>
+                    Trip Advisor
+                  </button>
+                  <button onClick={() => window.open(place.website, "_blank")}>
+                    Website
+                  </button>
                 </div>
               </div>
             );
